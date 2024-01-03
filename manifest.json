@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Refresher",
+  "description": "Refresh an active tab after your desired duration.",
+  "version": "1.0",
+  "permissions": [
+    "scripting"
+  ],
+  "host_permissions":[
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "dir/index.html",
+    "default_icon": {
+        "16": "images/9004820_load_loading_refresh_sync_icon.png",
+        "48": "images/9004820_load_loading_refresh_sync_icon.png",
+        "128": "images/9004820_load_loading_refresh_sync_icon.png"
+    }
+  },
+  "background": {
+      "service_worker": "/src/service-worker.js",
+      "type":"module"
+    }
+}
