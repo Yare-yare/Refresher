@@ -19,38 +19,37 @@
             alt="home arrow"></button></a>
     </div>
     <!-- toggle -->
-    <div class="onOrOff">
+    <div id="onOrOff">
       <input type="checkbox" class="toggle" checked />
     </div>
   </div>
   <br>
   <div class="content2">
-    <!-- input button 
-    <input type="number" id="timerInput" placeholder="Enter timer duration (in seconds)" />
-    <button id="startTimer">Start Timer</button>-->
-
     <!-- typing thing -->
     <div id="table">
       <div id="centeralign">
-        <code>Click toggle above when ready!</code>
+        <code id="toggleWord" style="display: block">Click toggle above when ready!</code>
       </div>
     </div>
 
-    <div style="display: none;">
-      <div class="countdown">
-        <div id="days" class="timer">00</div>
-        <div class="timer-label">Days</div>
-    
-        <div id="hours" class="timer">00</div>
-        <div class="timer-label">Hours</div>
-    
-        <div id="minutes" class="timer">00</div>
-        <div class="timer-label">Minutes</div>
-    
-        <div id="seconds" class="timer">00</div>
-        <div class="timer-label">Seconds</div>
-      </div>
-  </div>
-</div>
+    <!-- input -->
+    <div id="question" style="display: none;">
+      <label for="duration">Enter duration in seconds:</label>
+      <input type="number" id="duration" name="duration" min="1">
+      <button id="startBtn">Start Timer</button>
+    </div>
+    <!-- <h2>Time Left</h2> -->
+    <div id="timer animatable" style="display: none;">
+      <svg>
+        <circle cx="50%" cy="50%" r="90" />
+        <circle cx="50%" cy="50%" r="90" pathLength="1" />
+        <text x="100" y="100" text-anchor="middle">
+          <tspan id="timeLeft"></tspan>
+        </text>
+        <text x="100" y="120" text-anchor="middle">seconds</text>
+      </svg>
+    </div>
+    <script src="/src/content.js"></script>
 </body>
+
 </html>

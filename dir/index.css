@@ -1,28 +1,33 @@
-body{
-  background-color: black;
+body {
+  background-image: url('/images/giphy\ \(6\).gif'); 
+  background-size: cover; 
+  background-repeat: no-repeat;
   padding: 1.5rem;
   white-space: nowrap;
-  overflow: hidden; /* This property hides any overflow content */
-  text-overflow: ellipsis; /* This property adds an ellipsis (...) to indicate text overflow */
+  overflow: hidden; 
+  text-overflow: ellipsis; 
   background-image: image();
   font-family: 'Indie Flower', cursive;
 }
 
-.content{
+.parent{
+  border-color:  antiquewhite ;
+}
+
+.content {
   font-family: 'Indie Flower', cursive;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.h1,.title{
+.h1,
+.title {
   color: antiquewhite;
   align-items: center;
   text-align: center;
 }
 
-
-
-.button{
+.button {
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
@@ -37,22 +42,20 @@ body{
   background-color: antiquewhite;
   opacity: 0;
   z-index: -1;
-  transition: opacity 1s ease; 
+  transition: opacity 1s ease;
 }
 
 .button:hover::before {
   opacity: 1;
 }
 
-.h1{
+.h1 {
   color: antiquewhite;
   text-decoration: underline;
 }
 
-/* Style the image with a round border */
+
 .image1 {
-  border-radius: 50%; /* Use 50% to make it perfectly round */
   width: 100%; /* Ensure the image fills its container */
   height: auto; /* Maintain aspect ratio */
 }
-
