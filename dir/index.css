@@ -7,7 +7,7 @@ body {
   overflow: hidden; 
   text-overflow: ellipsis; 
   background-image: image();
-  font-family: 'Indie Flower', cursive;
+  font-family:'Courier New', Courier, monospace;
 }
 
 .parent{
@@ -27,12 +27,12 @@ body {
   text-align: center;
 }
 
-.button {
+#startButton {
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
 
-.button::before {
+#startButton::before {
   content: '';
   position: absolute;
   top: 0;
@@ -45,7 +45,7 @@ body {
   transition: opacity 1s ease;
 }
 
-.button:hover::before {
+#startButton:hover::before {
   opacity: 1;
 }
 
@@ -58,4 +58,12 @@ body {
 .image1 {
   width: 100%; /* Ensure the image fills its container */
   height: auto; /* Maintain aspect ratio */
+}
+
+/*  */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 10px;
 }

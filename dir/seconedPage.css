@@ -1,13 +1,12 @@
 @import url('./index.css');
 body{
-  background: #000;
+  background: #000000;
 }
 /* seconedPage */
 .content2 {
   color: antiquewhite;
   border: 2px solid antiquewhite;
   border-radius: 0.5rem;
-  /* new */
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
@@ -88,7 +87,7 @@ body{
   align-items: center;
 }
 
-.timer {
+.timer_animatable {
   font-size: 3em;
   margin: 0 10px;
   padding: 10px;
@@ -106,7 +105,6 @@ body{
 }
 
 /* typing */
-/* typing */
 p {
   text-align: left;
   margin: 0;
@@ -114,22 +112,14 @@ p {
   font-size: 10pt;
   font-weight: 900;
   width: 50%;
-  /* Remove or change display property */
 }
 
-/* #table {
-  display: table;
-  width: 100%;
-  height: 100%;
-  background-color: #e5e5e5;
-} */
-
 #centeralign {
-  overflow: hidden; /* Ensures the text is not revealed until the animation */
-  border-right: 0.15em solid orange; /* The typewriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
+  overflow: hidden; 
+  border-right: 0.15em solid orange; 
+  white-space: nowrap; 
+  margin: 0 auto;
+  letter-spacing: 0.15em; 
   animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 /* The typing effect animation */
@@ -146,43 +136,161 @@ p {
 
 
 #toggleWord{
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* timer */
-.timer {
-    margin-top: 10px;
-}
-  
-.timer > svg {
-    width: 200px;
-    height: 200px;
+
+
+
+
+#choices{
+  display: flex;
 }
 
-.timer > svg > circle {
-    fill: none;
-    stroke-opacity: 0.3;
-    stroke: antiquewhite;
-    stroke-width: 10;
-    transform-origin: center center;
-    transform: rotate(-90deg);
+#question{
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
 }
 
-.timer > svg > circle + circle {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    stroke-linecap: round;
-    stroke-opacity: 1;
+/* question ui */
+#easyTimeSelection{
+  border: 2px solid antiquewhite;
+  border-radius: 0.5rem;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
-.timer.animatable > svg > circle + circle {
-    transition: stroke-dashoffset 0.3s ease;
+/* button ui */
+#fiveSec{
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
-.timer > svg > text {
-    font-size: 2rem;
+#fiveSec img {
+  width: 50px; 
+  height: 50px;
 }
 
-.timer > svg > text + text {
-    font-size: 1rem;
+#tenSec{
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+#tenSec img {
+  width: 50px; 
+  height: 50px;
+}
+
+#enabler{
+  margin-top: 20px;
+}
+
+#timerBillboard img{
+  width: 20px; 
+  height: 20px;
+}
+
+.timer-button {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+  background: transparent;
+  font-size: 28px;
+  border: none;
+  transition: all 1s;
+}
+
+.timer-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.timer-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1s ease;
+}
+
+#fiveSec::before,
+#tenSec::before {
+  border-radius: 0.5rem;
+}
+
+#fiveSec:hover::before,
+#tenSec:hover::before {
+  opacity: 1;
+}
+
+#or{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#timerBillboard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#queryForMinutes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#duration {
+  border-radius: 0.5rem;
+  background-color: antiquewhite;
+  transition: background-color 0.3s ease; /* Smooth transition for background-color */
+}
+
+#duration:hover {
+  background-color: #708090;
+  color: antiquewhite;
+}
+
+#refresh{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#refreshButton{
+  padding: 10px;
+  border-radius: 10px;
+  background-color:#708090;
+  transition: background-color 0.3s ease;
+}
+
+#refreshButton:hover{
+  background-color:#44ff00;
+}
+
+#refreshButton img {
+  width: 50px; /* Adjust the width to your desired size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+#countdownDisplay{
+  margin-top: 10px;
 }

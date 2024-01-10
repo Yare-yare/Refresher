@@ -34,22 +34,31 @@
 
     <!-- input -->
     <div id="question" style="display: none;">
-      <label for="duration">Enter duration in seconds:</label>
+      <div id="timerBillboard">Choose 5 or 10 sec</div>
+      <br>
+      <div id="easyTimeSelection">
+        <button id="fiveSec" class="timer-button">
+          <img src="/images/timer (3).png" alt="5 sec">
+        </button>
+        <button id="tenSec" class="timer-button">
+          <img src="/images/timer (4).png" alt="10 sec">
+        </button>
+      </div>
+      <div id="or"><code id="orWord">OR</code></div>
+      <div id="queryForMinutes">
+        <label for="duration">Enter how many seconds</label>
+      </div>
+      <br>
       <input type="number" id="duration" name="duration" min="1">
-      <button id="startBtn">Start Timer</button>
+      <div id="refresh"><button id="refreshButton"><img src="/images/hourglass.png" alt=""></button></div>
     </div>
-    <!-- <h2>Time Left</h2> -->
-    <div id="timer animatable" style="display: none;">
-      <svg>
-        <circle cx="50%" cy="50%" r="90" />
-        <circle cx="50%" cy="50%" r="90" pathLength="1" />
-        <text x="100" y="100" text-anchor="middle">
-          <tspan id="timeLeft"></tspan>
-        </text>
-        <text x="100" y="120" text-anchor="middle">seconds</text>
-      </svg>
+    <!-- countdown visual -->
+    <div id="countdownDisplay" style="display:none">
+      Countdown: <span id="countdownValue"></span>
     </div>
     <script src="/src/content.js"></script>
+  </div>
 </body>
+
 
 </html>
