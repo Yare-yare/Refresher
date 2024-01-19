@@ -30,6 +30,8 @@ body {
 #startButton {
   border-radius: 0.5rem;
   padding: 0.5rem;
+  background-color:black;
+  box-shadow: 5px 5px 5px antiquewhite;
 }
 
 #startButton::before {
