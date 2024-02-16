@@ -4,22 +4,43 @@
   "description": "Refresh an active tab after your desired duration.",
   "version": "1.0",
   "permissions": [
-    "scripting"
+    "scripting",
+    "tabs"
   ],
-  "host_permissions":[
+  "host_permissions": [
     "http://*/*",
     "https://*/*"
   ],
   "action": {
     "default_popup": "dir/index.html",
     "default_icon": {
-        "16": "images/hourglass.png",
-        "48": "images/hourglass.png",
-        "128": "images/hourglass.png"
+      "16": "images/hourglass.png",
+      "48": "images/hourglass.png",
+      "128": "images/hourglass.png"
     }
   },
-  "background": {
-      "service_worker": "/src/service-worker.js",
-      "type":"module"
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["/src/content.js"]
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["dir/popup.html"]
+    }
+  ],
+  "background": {
+    "service_worker": "/src/background.js"
+  },
+  "commands": {
+    "open_popup": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open the popup"
+    }
+  }
 }

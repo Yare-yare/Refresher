@@ -1,5 +1,5 @@
+console.log("Content script has been injected and is running.");
 document.addEventListener("DOMContentLoaded", function () {
-  const { OpenAI } = require('openai');
   const onOrOff = document.getElementById("onOrOff");
   const toggleWord = document.getElementById("toggleWord");
   const question = document.getElementById("question");
@@ -98,3 +98,41 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/* chat gpt shortcut */
+function keyListener() {
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.shiftKey && event.key === 'y') {
+      chrome.runtime.sendMessage({message: "open_window"});
+    }
+  });
+}
+keyListener()
+
+
+/* chat window */
+/* const apiKey = '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';
+const prompt = 'Once upon a time, ';
+const apiUrl = 'https://api.openai.com/v1/chat/completions'
+
+fetch(apiUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify({
+    "model": "gpt-3.5-turbo-instruct-0914",
+    "prompt": "Who is Talha bin Ubaidillah",
+    "max_tokens": 50,
+    "temperature": 0,
+  }),
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log('Response from OpenAI API:', data);
+    // Handle the response data here
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+ */

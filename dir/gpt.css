@@ -1,0 +1,41 @@
+body {
+  background-image: url('/images/giphy\ \(17\).gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  padding: 10rem;
+}
+
+#gptLeftArrow {
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border: 2px solid black; /* Border color */
+    color: black; /* Text color */
+    padding: 5px; /* Adjust padding as needed */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+#gptLeftArrow:hover {
+    background-color: #708090; /* Slate Gray color on hover */
+}
+
+#github {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
+
+h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: antiquewhite;
+}
