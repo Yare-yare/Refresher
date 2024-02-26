@@ -5,7 +5,8 @@
   "version": "1.0",
   "permissions": [
     "scripting",
-    "tabs"
+    "tabs",
+    "system.display"
   ],
   "host_permissions": [
     "http://*/*",
