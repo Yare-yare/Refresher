@@ -76,7 +76,7 @@ body {
 }
 
 /* Checkbox styles */
-.toggle {
+#toggle {
   appearance: none;
   width: 40px;
   height: 20px;
@@ -89,7 +89,7 @@ body {
   background-color: #708090;
 }
 
-.toggle::before {
+#toggle::before {
   content: '';
   position: absolute;
   width: 16px;
@@ -101,7 +101,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-.toggle:checked::before {
+#toggle:checked::before {
   transform: translateX(-20px); /* Adjust direction for checked state */
   background-color: #ff0202;
 }

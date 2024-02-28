@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fiveSec = document.getElementById('fiveSec');
   const tenSec = document.getElementById('tenSec');
   const chatParent = document.getElementById('chatParent');
+  const toggle = document.getElementById('toggle')
 
   let countdownInterval;
 
@@ -24,61 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
     alert(message);
   };
 
-  let countdownStarted = false;
-  let countdown = 0;
-
-  const startCountdown = (additionalTime = 0) => {
-    clearInterval(countdownInterval);
-
-    let durationValue = duration.value ? parseInt(duration.value) : 0;
-
-    if (isNaN(durationValue) || durationValue < 0) {
-      showAlert("Please enter a valid duration greater than 0.");
-      return;
-    }
-
-    countdown = durationValue + additionalTime;
-
-    countdownValue.textContent = countdown;
-    showElement(countdownDisplay, "block");
-
-    countdownInterval = setInterval(() => {
-      if (countdown > 0) {
-        countdown--;
-        countdownValue.textContent = countdown;
-      } else {
-        clearInterval(countdownInterval);
-        countdownStarted = false;
-        // Reload the current tab
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-          chrome.tabs.reload(tabs[0].id);
-        });
-      }
-    }, 1000);
-
-    countdownStarted = true;
-  };
-
+  /* button timer logic */
   fiveSec.addEventListener('click', () => {
-    if (!countdownStarted) {
-      countdown = parseInt(duration.value);
-      startCountdown();
-    }
-    clearInterval(countdown);
-    countdown += 5;
+    // Send a message to the background script to add 5 seconds to the timer
+    chrome.runtime.sendMessage({ command: "addToTimer", seconds: 5 });
   });
-
+  
   tenSec.addEventListener('click', () => {
-    if (!countdownStarted) {
-      countdown = parseInt(duration.value);
-      startCountdown();
-    }
-    clearInterval(countdown);
-    countdown += 10;
+    // Send a message to the background script to add 10 seconds to the timer
+    chrome.runtime.sendMessage({ command: "addToTimer", seconds: 10 });
   });
+  
 
   onOrOff.addEventListener("click", () => {
-    if (toggleWord.style.display === "block") {
+    if (!toggle.checked) {
       showElement(question, "block");
       hideElement(toggleWord);
       chatParent.style.display = "flex";
@@ -94,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   refreshButton.addEventListener("click", () => {
-    startCountdown();
+    // Send a message to the background script to start the timer
+    chrome.runtime.sendMessage({ command: "startTimer", duration: duration.value });
   });
 });
 
@@ -102,37 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function keyListener() {
   document.addEventListener('keydown', function (event) {
     if (event.ctrlKey && event.shiftKey && event.key === 'y') {
-      chrome.runtime.sendMessage({message: "open_window"});
+      chrome.runtime.sendMessage({ message: "open_window" });
     }
   });
 }
 keyListener()
-
-
-/* chat window */
-/* const apiKey = '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';
-const prompt = 'Once upon a time, ';
-const apiUrl = 'https://api.openai.com/v1/chat/completions'
-
-fetch(apiUrl, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}`
-  },
-  body: JSON.stringify({
-    "model": "gpt-3.5-turbo-instruct-0914",
-    "prompt": "Who is Talha bin Ubaidillah",
-    "max_tokens": 50,
-    "temperature": 0,
-  }),
-})
-  .then(response => response.json())
-  .then(data => {
-    console.log('Response from OpenAI API:', data);
-    // Handle the response data here
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
- */
